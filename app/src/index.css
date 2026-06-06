@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500;600;700;800&family=Inter:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 14% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 14% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 14% 14%;
+    --primary: 33 92% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 166 100% 39%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 14% 45%;
+    --accent: 210 20% 96%;
+    --accent-foreground: 222 14% 14%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 33 92% 53%;
+    --radius: 0.5rem;
+
+    --ease-standard: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-entrance: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-outexpo: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-charcoal font-inter;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-archivo;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
