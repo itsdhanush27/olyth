@@ -219,11 +219,11 @@ export default function Contact() {
   useScrollToTop()
   
   return (
-    <main className="pt-36 pb-20 bg-gray-50 min-h-screen">
+    <main className="pt-24 md:pt-36 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-content mx-auto px-5">
         <ScrollFadeIn className="text-center mb-12">
           <SectionLabel text="CONTACT US" />
-          <h1 className="font-archivo text-[56px] md:text-[80px] font-light text-charcoal tracking-[-2.56px] leading-[1.08] mt-4">
+          <h1 className="font-archivo text-[36px] sm:text-[56px] md:text-[80px] font-light text-charcoal tracking-[-1.5px] sm:tracking-[-2px] md:tracking-[-2.56px] leading-[1.08] mt-4">
             Get in Touch
           </h1>
           <p className="font-inter text-base text-clay mt-4 max-w-lg mx-auto">

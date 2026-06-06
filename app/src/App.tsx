@@ -23,7 +23,7 @@ export default function App() {
   const isAdminPage = location.pathname === '/admin'
   
   return (
-    <div className="min-h-[100dvh] flex flex-col">
+    <div className="min-h-[100dvh] flex flex-col overflow-x-hidden">
       {!isAdminPage && <Navigation />}
       <div className="flex-1">
         <Routes key={location.pathname}>

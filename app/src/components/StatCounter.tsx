@@ -80,7 +80,7 @@ export default function StatCounter({ value, label, color = 'orange', delay = 0 
       <span
         ref={numberRef}
         className={cn(
-          'font-archivo text-[60px] font-light leading-none tracking-[-2.4px]',
+          'font-archivo text-[40px] sm:text-[48px] md:text-[60px] font-light leading-none tracking-[-1.5px] md:tracking-[-2.4px]',
           color === 'orange' ? 'text-orange' : 'text-teal'
         )}
       >

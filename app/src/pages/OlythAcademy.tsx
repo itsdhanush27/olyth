@@ -35,12 +35,12 @@ export default function OlythAcademy() {
   useScrollToTop()
 
   return (
-    <main className="pt-36 pb-20 bg-gray-50 min-h-screen">
+    <main className="pt-24 md:pt-36 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-content mx-auto px-5">
         {/* Header */}
         <ScrollFadeIn className="text-center mb-16">
           <SectionLabel text="OLYTH ACADEMY" />
-          <h1 className="font-archivo text-[36px] md:text-[60px] font-light text-charcoal tracking-[-2.4px] leading-[1.07] mt-4">
+          <h1 className="font-archivo text-[28px] sm:text-[36px] md:text-[60px] font-light text-charcoal tracking-[-1.5px] sm:tracking-[-2px] md:tracking-[-2.4px] leading-[1.07] mt-4">
             Learn Customer Support Excellence
           </h1>
           <p className="font-inter text-base text-clay mt-4 max-w-lg mx-auto">
@@ -79,8 +79,8 @@ export default function OlythAcademy() {
         </ScrollFadeIn>
 
         {/* CTA Section */}
-        <ScrollFadeIn className="bg-gradient-to-br from-orange/5 to-orange/10 rounded-card p-12 border border-orange/20 text-center">
-          <h2 className="font-archivo text-3xl font-light text-charcoal mb-4">
+        <ScrollFadeIn className="bg-gradient-to-br from-orange/5 to-orange/10 rounded-card p-6 sm:p-12 border border-orange/20 text-center">
+          <h2 className="font-archivo text-2xl sm:text-3xl font-light text-charcoal mb-4">
             Ready to Master Customer Support?
           </h2>
           <p className="font-inter text-base text-clay max-w-lg mx-auto mb-8">

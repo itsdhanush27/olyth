@@ -45,7 +45,7 @@ export default function CTAWaveSection() {
         {/* Orange accent line */}
         <div className="w-12 h-1 rounded-full bg-orange mx-auto mb-8" />
 
-        <h2 className="font-archivo text-[32px] md:text-[52px] font-light text-charcoal tracking-[-2.08px] leading-[1.06]">
+        <h2 className="font-archivo text-[26px] sm:text-[32px] md:text-[52px] font-light text-charcoal tracking-[-1px] sm:tracking-[-1.5px] md:tracking-[-2.08px] leading-[1.06]">
           Ready to transform your customer support?
         </h2>
         <p className="font-inter text-base text-clay mt-5 max-w-[480px] mx-auto">

@@ -11,7 +11,7 @@ const tabs = [
     title: 'Connect every channel in minutes',
     body: "Plug in WhatsApp Business, email, social media, voice, and live chat. Olyth unifies every conversation into a single intelligent workspace - no more switching between tools.",
     link: 'Explore Integrations',
-    image: '/assets/tab-connect.jpg',
+    image: './assets/tab-connect.jpg',
   },
   {
     id: 1,
@@ -19,7 +19,7 @@ const tabs = [
     title: 'AI that actually resolves issues',
     body: "Thal triages incoming requests, understands customer intent, accesses your knowledge base, and resolves issues autonomously. It only escalates what truly needs a human touch.",
     link: 'Meet Thal',
-    image: '/assets/tab-automate.jpg',
+    image: './assets/tab-automate.jpg',
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const tabs = [
     title: 'Grow without growing pains',
     body: "Handle 10x the volume without adding headcount. Real-time analytics show you exactly where to optimize. Your team focuses on what matters - Thal handles the rest.",
     link: 'See Analytics',
-    image: '/assets/tab-scale.jpg',
+    image: './assets/tab-scale.jpg',
   },
 ]
 
@@ -72,7 +72,7 @@ export default function ProcessSection() {
           <ScrollFadeIn>
             <div>
               <SectionLabel text="HOW IT WORKS" />
-              <h2 className="font-archivo text-[36px] md:text-[60px] font-light text-charcoal tracking-[-2.4px] leading-[1.07] max-w-[480px] mt-4">
+              <h2 className="font-archivo text-[28px] sm:text-[36px] md:text-[60px] font-light text-charcoal tracking-[-1.5px] sm:tracking-[-2px] md:tracking-[-2.4px] leading-[1.07] max-w-[480px] mt-4">
                 Three steps to effortless support
               </h2>
 
@@ -110,7 +110,7 @@ export default function ProcessSection() {
 
               {/* Content */}
               <div ref={contentRef}>
-                <h3 className="font-archivo text-[28px] md:text-[32px] font-medium text-charcoal tracking-[-0.64px] leading-tight">
+                <h3 className="font-archivo text-[22px] md:text-[28px] lg:text-[32px] font-medium text-charcoal tracking-[-0.64px] leading-tight">
                   {tab.title}
                 </h3>
                 <p className="font-inter text-base text-clay mt-4 leading-relaxed">

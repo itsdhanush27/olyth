@@ -6,21 +6,21 @@ const testimonials = [
     name: 'Amina Osei',
     title: 'Head of Customer Experience',
     company: 'FinPay Ghana',
-    avatar: '/assets/testimonial-1.jpg',
+    avatar: './assets/testimonial-1.jpg',
   },
   {
     quote: "We went from 24-hour response times to under 3 minutes. The omnichannel inbox means nothing falls through the cracks. Best investment we've made.",
     name: 'Tunde Bakare',
     title: 'CEO',
     company: 'Lagos Logistics Co.',
-    avatar: '/assets/testimonial-2.jpg',
+    avatar: './assets/testimonial-2.jpg',
   },
   {
     quote: "The analytics dashboard alone is worth it. We can see exactly where our support bottlenecks are and fix them proactively. Thal is genuinely intelligent.",
     name: 'Priya Naidoo',
     title: 'Operations Director',
     company: 'CapeTech South Africa',
-    avatar: '/assets/testimonial-3.jpg',
+    avatar: './assets/testimonial-3.jpg',
   },
 ]
 

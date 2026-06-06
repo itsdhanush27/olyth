@@ -54,7 +54,7 @@ export default function SignIn() {
   }
 
   return (
-    <main className="pt-36 pb-20 bg-gray-50 min-h-screen">
+    <main className="pt-24 md:pt-36 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-[420px] mx-auto px-5">
         <ScrollFadeIn className="text-center mb-8">
           <div className="w-16 h-16 rounded-2xl bg-orange/10 flex items-center justify-center mx-auto mb-6">

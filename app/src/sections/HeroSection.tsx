@@ -84,7 +84,7 @@ export default function HeroSection() {
         style={{ transform: 'translateY(0)' }}
       >
         <img
-          src="/assets/hero-bg.jpg"
+          src="./assets/hero-bg.jpg"
           alt="Hero background"
           className="w-full h-[130%] object-cover object-center"
         />
@@ -99,10 +99,10 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-5 pt-24 md:pt-32 pb-16 max-w-[900px] mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-6 pt-24 md:pt-32 pb-16 max-w-[900px] mx-auto">
         <h1
           ref={headlineRef}
-          className="font-archivo text-[48px] md:text-[74px] font-light text-white leading-[1.08] tracking-[-2.96px] opacity-0"
+          className="font-archivo text-[32px] sm:text-[48px] md:text-[74px] font-light text-white leading-[1.08] tracking-[-1.5px] sm:tracking-[-2px] md:tracking-[-2.96px] opacity-0"
           style={{ textShadow: '0px 2px 8px rgba(37, 34, 34, 0.3)' }}
         >
           Unified Customer Support Platform for Emerging Markets
@@ -110,7 +110,7 @@ export default function HeroSection() {
 
         <p
           ref={subRef}
-          className="font-inter text-lg text-white/85 max-w-[640px] mx-auto mt-6 opacity-0"
+          className="font-inter text-base sm:text-lg text-white/85 max-w-[640px] mx-auto mt-4 sm:mt-6 opacity-0"
         >
           Powered by Thal, an operational AI brain that automates customer support, issue resolution, and escalation across every channel - WhatsApp, email, voice, and social.
         </p>
@@ -135,7 +135,7 @@ export default function HeroSection() {
         >
           <div className="rounded-xl overflow-hidden shadow-dashboard">
             <img
-              src="/assets/dashboard-mockup-brand.png"
+              src="./assets/dashboard-mockup-brand.png"
               alt="Olyth Dashboard Preview"
               className="w-full h-auto"
             />

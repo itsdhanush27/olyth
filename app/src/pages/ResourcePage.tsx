@@ -90,7 +90,7 @@ export default function ResourcePage() {
 
   if (!resource) {
     return (
-      <main className="pt-36 pb-20 bg-gray-50 min-h-screen">
+      <main className="pt-24 md:pt-36 pb-20 bg-gray-50 min-h-screen">
         <div className="max-w-content mx-auto px-5">
           <button
             onClick={() => navigate('/')}
@@ -109,7 +109,7 @@ export default function ResourcePage() {
   }
 
   return (
-    <main className="pt-36 pb-20 bg-gray-50 min-h-screen">
+    <main className="pt-24 md:pt-36 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-content mx-auto px-5">
         <button
           onClick={() => navigate('/')}
@@ -120,7 +120,7 @@ export default function ResourcePage() {
         </button>
 
         <ScrollFadeIn className="mb-12">
-          <h1 className="font-archivo text-[48px] md:text-[64px] font-light text-charcoal tracking-[-2.56px] leading-[1.08] mb-4">
+          <h1 className="font-archivo text-[28px] sm:text-[48px] md:text-[64px] font-light text-charcoal tracking-[-1.5px] sm:tracking-[-2px] md:tracking-[-2.56px] leading-[1.08] mb-4">
             {resource.title}
           </h1>
           <p className="font-inter text-lg text-clay max-w-2xl">

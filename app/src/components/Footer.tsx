@@ -73,9 +73,9 @@ export default function Footer() {
               className="flex items-center hover:opacity-80 transition-opacity duration-300 mb-2"
             >
               <img
-                src="/assets/Olyth_Logo_Orange-removebg-preview.png"
+                src="./assets/Olyth_Logo_Orange-removebg-preview.png"
                 alt="Olyth"
-                className="h-32 w-auto object-contain filter brightness-0 invert"
+                className="h-20 w-auto object-contain filter brightness-0 invert"
               />
             </button>
             <p className="font-inter text-sm text-gray-400 mt-1 max-w-[260px] leading-relaxed">
@@ -117,7 +117,7 @@ export default function Footer() {
           <p className="font-inter text-sm text-gray-400 mb-5 max-w-md">
             Get the latest product updates, AI insights, and customer support trends.
           </p>
-          <form onSubmit={handleSubscribe} className="flex gap-3 max-w-md">
+          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md">
             <input
               type="email"
               value={email}

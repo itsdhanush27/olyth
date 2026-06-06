@@ -14,7 +14,7 @@ export default function SalesRepresentatives() {
   }, [])
 
   return (
-    <main className="pt-36 pb-20 bg-cream min-h-screen">
+    <main className="pt-24 md:pt-36 pb-20 bg-cream min-h-screen">
       <div className="max-w-content mx-auto px-5">
         <ScrollFadeIn className="text-center mb-12">
           <SectionLabel text="SALES TEAM" />

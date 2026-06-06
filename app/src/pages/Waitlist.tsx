@@ -97,14 +97,14 @@ export default function Waitlist() {
   }
 
   return (
-    <main className="pt-36 pb-20 bg-gray-50 min-h-screen">
+    <main className="pt-24 md:pt-36 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-[720px] mx-auto px-5">
         <ScrollFadeIn className="text-center mb-10">
           <div className="w-16 h-16 rounded-2xl bg-orange/10 flex items-center justify-center mx-auto mb-6">
             <Star size={32} className="text-orange" />
           </div>
           <SectionLabel text="EXCLUSIVE ACCESS" />
-          <h1 className="font-archivo text-[48px] md:text-[64px] font-light text-charcoal tracking-[-2.56px] leading-[1.08] mt-4">
+          <h1 className="font-archivo text-[32px] sm:text-[48px] md:text-[64px] font-light text-charcoal tracking-[-1.5px] sm:tracking-[-2px] md:tracking-[-2.56px] leading-[1.08] mt-4">
             Join 8,257 others on the waitlist
           </h1>
           <p className="font-inter text-base text-clay mt-4">
@@ -192,7 +192,7 @@ export default function Waitlist() {
               </div>
 
               {/* Region and Package Row */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <div>
                   <label className="font-inter text-sm font-medium text-charcoal mb-1.5 block">
                     Country *

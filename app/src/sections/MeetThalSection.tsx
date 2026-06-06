@@ -90,12 +90,12 @@ export default function MeetThalSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <SectionLabel text="AI ENGINE" color="teal" />
-          <h2 className="font-archivo text-[36px] md:text-[60px] font-light text-charcoal tracking-[-2.4px] leading-[1.07] max-w-[800px] mx-auto mt-4">
+          <h2 className="font-archivo text-[28px] sm:text-[36px] md:text-[60px] font-light text-charcoal tracking-[-1.5px] sm:tracking-[-2px] md:tracking-[-2.4px] leading-[1.07] max-w-[800px] mx-auto mt-4">
             Meet Thal
             <br />
             The Operational Brain Behind Olyth
           </h2>
-          <p className="font-inter text-lg text-clay max-w-[640px] mx-auto mt-6">
+          <p className="font-inter text-base text-clay max-w-[640px] mx-auto mt-4 sm:mt-6">
             Thal doesn't just respond — it understands, decides, and resolves. Every conversation is context-aware, every action is autonomous, every escalation is intelligent.
           </p>
         </div>

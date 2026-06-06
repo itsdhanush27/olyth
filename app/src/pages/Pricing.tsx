@@ -109,11 +109,11 @@ export default function Pricing() {
   const navigate = useNavigate()
 
   return (
-    <main className="pt-36 pb-20 bg-gray-50 min-h-screen">
+    <main className="pt-24 md:pt-36 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-content mx-auto px-5">
         <ScrollFadeIn className="text-center mb-12">
           <SectionLabel text="PRICING" />
-          <h1 className="font-archivo text-[36px] md:text-[60px] font-light text-charcoal tracking-[-2.4px] leading-[1.07] mt-4">
+          <h1 className="font-archivo text-[28px] sm:text-[36px] md:text-[60px] font-light text-charcoal tracking-[-1.5px] sm:tracking-[-2px] md:tracking-[-2.4px] leading-[1.07] mt-4">
             Simple, transparent pricing
           </h1>
           <p className="font-inter text-base text-clay mt-4 max-w-lg mx-auto">
@@ -219,7 +219,7 @@ export default function Pricing() {
 
         {/* Thal Add-on */}
         <ScrollFadeIn className="mt-8">
-          <div className="bg-white rounded-card p-6 border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="bg-white rounded-card p-6 border border-gray-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <p className="font-archivo text-lg font-medium text-charcoal">
                 Thal Platform Access

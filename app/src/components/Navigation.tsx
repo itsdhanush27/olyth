@@ -163,7 +163,7 @@ export default function Navigation() {
       {/* Mobile Menu Overlay - Positioned above navbar */}
       {mobileOpen && (
         <div className="fixed inset-0 top-0 z-[910] bg-white lg:hidden overflow-y-auto pt-24">
-          <div className="flex flex-col pb-8 px-6 px-4 sm:px-6">
+          <div className="flex flex-col pb-8 px-4 sm:px-6">
             {/* Mobile Navigation Links */}
             {navLinks.slice(0, 6).map((link) => (
               <div key={link.key} className="border-b border-gray-100">
@@ -295,7 +295,7 @@ export default function Navigation() {
             className="flex items-center hover:opacity-80 transition-opacity duration-300 shrink-0"
           >
             <img
-              src="/assets/olyth-logo.png"
+              src="./assets/olyth-logo.png"
               alt="Olyth"
               className="h-12 sm:h-14 lg:h-16 w-auto object-contain"
             />

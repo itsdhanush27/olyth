@@ -23,13 +23,13 @@ export default function Careers() {
   }, [])
 
   return (
-    <main className="pt-36 pb-20 bg-gray-50 min-h-screen">
+    <main className="pt-24 md:pt-36 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-content mx-auto px-5">
 
         {/* Header */}
         <ScrollFadeIn className="text-center mb-16">
           <SectionLabel text="CAREERS" />
-          <h1 className="font-archivo text-[36px] md:text-[60px] font-light text-charcoal tracking-[-2.4px] leading-[1.07] mt-4">
+          <h1 className="font-archivo text-[28px] sm:text-[36px] md:text-[60px] font-light text-charcoal tracking-[-1.5px] sm:tracking-[-2px] md:tracking-[-2.4px] leading-[1.07] mt-4">
             Join the Olyth team
           </h1>
           <p className="font-inter text-base text-clay mt-4 max-w-lg mx-auto">
