@@ -172,20 +172,19 @@ export default function PricingPreviewSection() {
                 {plan.isThal ? (
                   <div className="mt-3 flex flex-col gap-4">
                     <div>
-                      <p className="font-inter text-[10px] font-semibold uppercase tracking-[1.5px] text-clay">
-                        Platform Access
-                      </p>
-                      <div className="flex items-baseline gap-1 mt-1.5">
+                      <div className="flex items-baseline gap-1">
                         <span className="font-archivo text-[36px] font-light text-charcoal tracking-[-1.44px]">
                           ${isAnnual ? '22' : '25'}
                         </span>
                         <span className="font-inter text-sm text-clay">
-                          /user/mo
+                          /user/month
                         </span>
                       </div>
-                      <p className="font-inter text-xs text-clay mt-1">
-                        {isAnnual ? 'when paid annually' : 'when paid monthly'}
-                      </p>
+                      {isAnnual && (
+                        <p className="font-inter text-sm text-clay mt-2">
+                          $22/user/month (billed annually)
+                        </p>
+                      )}
                     </div>
 
                     <div className="border-t border-gray-100 pt-3">
