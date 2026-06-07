@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { MessageSquare, Wrench, MessageCircle } from 'lucide-react'
+import { ChevronRight, Rocket, Headphones, Lightbulb } from 'lucide-react'
 import ScrollFadeIn from '@/components/ScrollFadeIn'
-import SectionLabel from '@/components/SectionLabel'
 import { useScrollToTop } from '@/hooks/useScrollToTop'
 import { supabase } from '@/lib/supabase'
+import { cn } from '@/lib/utils'
+import { MessageSquare, Wrench, MessageCircle } from 'lucide-react'
 
 const cardData = [
   {
@@ -215,29 +216,98 @@ function ContactCard({ card }: { card: typeof cardData[0] }) {
   )
 }
 
+const cardsSelection = [
+  {
+    key: 'sales',
+    title: 'Talk to Sales',
+    description: 'New to Olyth? Get a personalised walkthrough, pricing guidance, or a demo.',
+    icon: Rocket,
+    iconBg: 'bg-orange/10',
+    iconColor: 'text-orange',
+  },
+  {
+    key: 'support',
+    title: 'Contact Support',
+    description: 'Already a customer? Get help with your account, a feature, or a technical issue.',
+    icon: Headphones,
+    iconBg: 'bg-teal/10',
+    iconColor: 'text-teal',
+  },
+  {
+    key: 'feedback',
+    title: 'Share Feedback',
+    description: 'Have a suggestion, spotted a bug, or want to share something we should know?',
+    icon: Lightbulb,
+    iconBg: 'bg-indigo/10',
+    iconColor: 'text-indigo',
+  },
+]
+
 export default function Contact() {
   useScrollToTop()
+  const [selectedCardTitle, setSelectedCardTitle] = useState<string | null>(null)
   
   return (
     <main className="pt-24 md:pt-36 pb-20 bg-gray-50 min-h-screen">
       <div className="max-w-content mx-auto px-5">
-        <ScrollFadeIn className="text-center mb-12">
-          <SectionLabel text="CONTACT US" />
-          <h1 className="font-archivo text-[36px] sm:text-[56px] md:text-[80px] font-light text-charcoal tracking-[-1.5px] sm:tracking-[-2px] md:tracking-[-2.56px] leading-[1.08] mt-4">
-            Get in Touch
-          </h1>
-          <p className="font-inter text-base text-clay mt-4 max-w-lg mx-auto">
-            Whether you want to talk sales, need support, or have feedback - we are here to help.
-          </p>
-        </ScrollFadeIn>
+        {selectedCardTitle === null ? (
+          <>
+            <ScrollFadeIn className="text-center mb-12">
+              <h1 className="font-archivo text-[36px] sm:text-[56px] md:text-[60px] font-light text-charcoal tracking-[-1.5px] sm:tracking-[-2px] md:tracking-[-2.4px] leading-[1.07] mt-4">
+                How can we help?
+              </h1>
+              <p className="font-inter text-base text-clay mt-4 max-w-lg mx-auto">
+                Choose what brings you here today.
+              </p>
+            </ScrollFadeIn>
 
-        <ScrollFadeIn stagger={0.1}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {cardData.map((card) => (
-              <ContactCard key={card.title} card={card} />
-            ))}
+            <ScrollFadeIn>
+              <div className="max-w-2xl mx-auto space-y-4">
+                {cardsSelection.map((card) => {
+                  const Icon = card.icon
+                  return (
+                    <div
+                      key={card.key}
+                      onClick={() => setSelectedCardTitle(card.title)}
+                      className="flex items-center gap-5 p-6 bg-white border border-gray-200 rounded-2xl shadow-sm cursor-pointer hover:border-orange/30 hover:shadow-card-hover transition-all duration-300 group"
+                    >
+                      <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center shrink-0", card.iconBg)}>
+                        <Icon className={cn("w-6 h-6", card.iconColor)} />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-archivo text-lg font-medium text-charcoal">{card.title}</h3>
+                        <p className="font-inter text-sm text-clay mt-1 leading-relaxed">{card.description}</p>
+                      </div>
+                      <ChevronRight className="w-5 h-5 text-gray-300 group-hover:text-orange group-hover:translate-x-0.5 transition-all duration-300 shrink-0" />
+                    </div>
+                  )
+                })}
+
+                <div className="text-center pt-8 border-t border-gray-100 mt-10">
+                  <h3 className="font-archivo text-lg font-medium text-charcoal">Need something else?</h3>
+                  <p className="font-inter text-sm text-clay mt-2 max-w-md mx-auto leading-relaxed">
+                    Use the most relevant form above and our team will route your enquiry to the correct department.
+                    We typically respond within one business day.
+                  </p>
+                </div>
+              </div>
+            </ScrollFadeIn>
+          </>
+        ) : (
+          <div className="max-w-2xl mx-auto">
+            <button
+              onClick={() => setSelectedCardTitle(null)}
+              className="flex items-center gap-2 font-inter text-sm font-medium text-clay hover:text-orange transition-colors mb-6"
+            >
+              ← Back to options
+            </button>
+            {cardData
+              .filter((card) => card.title === selectedCardTitle)
+              .map((card) => (
+                <ContactCard key={card.title} card={card} />
+              ))}
           </div>
-        </ScrollFadeIn>
+        )}
       </div>
     </main>
   )
