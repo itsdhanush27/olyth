@@ -102,10 +102,10 @@ export default function HeroSection() {
       <div className="relative z-10 text-center px-4 sm:px-6 pt-24 md:pt-32 pb-16 max-w-[900px] mx-auto">
         <h1
           ref={headlineRef}
-          className="font-archivo text-[24px] sm:text-[36px] md:text-[48px] font-light text-white leading-[1.08] tracking-[-1px] sm:tracking-[-1.5px] md:tracking-[-2px] opacity-0"
+          className="font-archivo text-[28px] sm:text-[42px] md:text-[60px] font-light text-white leading-[1.08] tracking-[-1px] sm:tracking-[-1.5px] md:tracking-[-2.4px] opacity-0"
           style={{ textShadow: '0px 2px 8px rgba(37, 34, 34, 0.3)' }}
         >
-          WhatsApp native customer operations platform for emerging markets
+          Unified Customer Operations Platform for Emerging Markets
         </h1>
 
         <p
