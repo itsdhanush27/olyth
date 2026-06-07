@@ -59,7 +59,7 @@ export default function HeroSection() {
         trigger: heroRef.current,
         start: 'top top',
         end: 'bottom top',
-        scrub: 0.5, // Reduced from true for better performance
+        scrub: 0.5,
       },
     })
 
@@ -105,7 +105,7 @@ export default function HeroSection() {
           className="font-archivo text-[28px] sm:text-[42px] md:text-[60px] font-light text-white leading-[1.08] tracking-[-1px] sm:tracking-[-1.5px] md:tracking-[-2.4px] opacity-0"
           style={{ textShadow: '0px 2px 8px rgba(37, 34, 34, 0.3)' }}
         >
-          WhatsApp native customer operations platform for emerging markets
+          Unified Customer Support Platform for Emerging Markets
         </h1>
 
         <p
@@ -117,7 +117,7 @@ export default function HeroSection() {
 
         <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 opacity-0">
           <Button onClick={() => navigate('/waitlist')}>
-            Get Started
+            Join the Waitlist
           </Button>
           <Button
             variant="secondary"
@@ -135,7 +135,7 @@ export default function HeroSection() {
         >
           <div className="rounded-xl overflow-hidden shadow-dashboard">
             <img
-              src="./assets/dashboard-mockup-brand.png"
+              src="./assets/dashboard-mockup.jpg"
               alt="Olyth Dashboard Preview"
               className="w-full h-auto"
             />
@@ -184,3 +184,4 @@ export default function HeroSection() {
     </section>
   )
 }
+
