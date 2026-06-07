@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { ChevronRight, Rocket, Headphones, Lightbulb } from 'lucide-react'
 import ScrollFadeIn from '@/components/ScrollFadeIn'
 import { useScrollToTop } from '@/hooks/useScrollToTop'
 import { supabase } from '@/lib/supabase'
 import { cn } from '@/lib/utils'
 import { MessageSquare, Wrench, MessageCircle } from 'lucide-react'
+import { useSearchParams } from 'react-router'
 
 const cardData = [
   {
@@ -47,9 +48,43 @@ function ContactCard({ card }: { card: typeof cardData[0] }) {
   const [formData, setFormData] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [files, setFiles] = useState<File[]>([])
+  const [dragActive, setDragActive] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const selectedFiles = Array.from(e.target.files)
+      setFiles((prev) => [...prev, ...selectedFiles])
+    }
+  }
+
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true)
+    } else if (e.type === "dragleave") {
+      setDragActive(false)
+    }
+  }
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setDragActive(false)
+    if (e.dataTransfer.files) {
+      const droppedFiles = Array.from(e.dataTransfer.files)
+      setFiles((prev) => [...prev, ...droppedFiles])
+    }
+  }
+
+  const removeFile = (indexToRemove: number) => {
+    setFiles((prev) => prev.filter((_, index) => index !== indexToRemove))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -87,6 +122,7 @@ function ContactCard({ card }: { card: typeof cardData[0] }) {
 
       setSubmitStatus('success')
       setFormData({})
+      setFiles([])
       setTimeout(() => setSubmitStatus('idle'), 3000)
     } catch (error) {
       console.error('Error submitting form:', error)
@@ -168,27 +204,57 @@ function ContactCard({ card }: { card: typeof cardData[0] }) {
           </div>
         ))}
 
-        {card.title === 'Contact Support' && (
+        {(card.title === 'Contact Support' || card.title === 'Share Feedback') && (
           <div>
             <label className="font-inter text-sm font-medium text-charcoal mb-1.5 block">
               Attachments (optional)
             </label>
-            <div className="border-2 border-dashed border-gray-200 rounded-lg p-6 text-center hover:border-orange/40 transition-colors">
+            
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleFileChange}
+              multiple
+              className="hidden"
+            />
+            
+            <div 
+              onClick={() => fileInputRef.current?.click()}
+              onDragEnter={handleDrag}
+              onDragOver={handleDrag}
+              onDragLeave={handleDrag}
+              onDrop={handleDrop}
+              className={cn(
+                "border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors duration-300",
+                dragActive ? "border-orange bg-orange/5" : "border-gray-200 hover:border-orange/40"
+              )}
+            >
               <p className="font-inter text-sm text-charcoal">Click to attach or drag and drop</p>
-              <p className="font-inter text-xs text-graytext mt-1">Screenshots, logs or any relevant files. Max 5 MB each.</p>
+              <p className="font-inter text-xs text-clay mt-1">
+                {card.title === 'Contact Support' 
+                  ? 'Screenshots, logs or any relevant files. Max 5 MB each.'
+                  : 'Screenshots or any supporting files. Max 5 MB each.'
+                }
+              </p>
             </div>
-          </div>
-        )}
 
-        {card.title === 'Share Feedback' && (
-          <div>
-            <label className="font-inter text-sm font-medium text-charcoal mb-1.5 block">
-              Attachments (optional)
-            </label>
-            <div className="border-2 border-dashed border-gray-200 rounded-lg p-6 text-center hover:border-orange/40 transition-colors">
-              <p className="font-inter text-sm text-charcoal">Click to attach or drag and drop</p>
-              <p className="font-inter text-xs text-graytext mt-1">Screenshots or any supporting files. Max 5 MB each.</p>
-            </div>
+            {/* List of selected files */}
+            {files.length > 0 && (
+              <div className="mt-3 space-y-2">
+                {files.map((file, index) => (
+                  <div key={index} className="flex items-center justify-between p-2.5 bg-gray-50 border border-gray-100 rounded-lg text-xs font-inter text-charcoal">
+                    <span className="truncate max-w-[80%]">{file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)</span>
+                    <button 
+                      type="button" 
+                      onClick={() => removeFile(index)} 
+                      className="text-red-500 hover:text-red-700 font-bold ml-2 px-1"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
 
@@ -245,7 +311,11 @@ const cardsSelection = [
 
 export default function Contact() {
   useScrollToTop()
-  const [selectedCardTitle, setSelectedCardTitle] = useState<string | null>(null)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const selectedType = searchParams.get('type')
+
+  const selectedCard = cardsSelection.find((c) => c.key === selectedType)
+  const selectedCardTitle = selectedCard ? selectedCard.title : null
   
   return (
     <main className="pt-24 md:pt-36 pb-20 bg-gray-50 min-h-screen">
@@ -268,7 +338,7 @@ export default function Contact() {
                   return (
                     <div
                       key={card.key}
-                      onClick={() => setSelectedCardTitle(card.title)}
+                      onClick={() => setSearchParams({ type: card.key })}
                       className="flex items-center gap-5 p-6 bg-white border border-gray-200 rounded-2xl shadow-sm cursor-pointer hover:border-orange/30 hover:shadow-card-hover transition-all duration-300 group"
                     >
                       <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center shrink-0", card.iconBg)}>
@@ -296,7 +366,7 @@ export default function Contact() {
         ) : (
           <div className="max-w-2xl mx-auto">
             <button
-              onClick={() => setSelectedCardTitle(null)}
+              onClick={() => setSearchParams({})}
               className="flex items-center gap-2 font-inter text-sm font-medium text-clay hover:text-orange transition-colors mb-6"
             >
               ← Back to options
