@@ -187,7 +187,7 @@ export default function PricingPreviewSection() {
                         {isAnnual ? 'when paid annually' : 'when paid monthly'}
                       </p>
                     </div>
-                    
+
                     <div className="border-t border-gray-100 pt-3">
                       <p className="font-inter text-[10px] font-semibold uppercase tracking-[1.5px] text-clay">
                         Resolution Pricing
