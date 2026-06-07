@@ -30,11 +30,8 @@ export default function Waitlist() {
           </div>
           <SectionLabel text="EXCLUSIVE ACCESS" />
           <h1 className="font-archivo text-[32px] sm:text-[48px] md:text-[64px] font-light text-charcoal tracking-[-1.5px] sm:tracking-[-2px] md:tracking-[-2.56px] leading-[1.08] mt-4">
-            Join the Waitlist
+            Join 8,256 others on the waitlist
           </h1>
-          <p className="font-inter text-base text-charcoal font-medium mt-6">
-            Be the first to experience Olyth
-          </p>
           <p className="font-inter text-base text-clay mt-4">
             Join our Invite-Only Access. We're rolling out gradually starting August 2026. Join the queue for exclusive, invite-only access.
           </p>
