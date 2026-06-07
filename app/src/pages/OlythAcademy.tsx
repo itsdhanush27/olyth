@@ -3,6 +3,7 @@ import ScrollFadeIn from '@/components/ScrollFadeIn'
 import SectionLabel from '@/components/SectionLabel'
 import Button from '@/components/Button'
 import { useScrollToTop } from '@/hooks/useScrollToTop'
+import { useNavigate } from 'react-router'
 
 const courses = [
   {
@@ -33,6 +34,7 @@ const courses = [
 
 export default function OlythAcademy() {
   useScrollToTop()
+  const navigate = useNavigate()
 
   return (
     <main className="pt-24 md:pt-36 pb-20 bg-gray-50 min-h-screen">
@@ -86,7 +88,7 @@ export default function OlythAcademy() {
           <p className="font-inter text-base text-clay max-w-lg mx-auto mb-8">
             Join thousands of support professionals learning modern strategies to deliver exceptional customer experiences.
           </p>
-          <Button className="mx-auto">
+          <Button onClick={() => navigate('/waitlist')} className="mx-auto">
             Access Olyth Academy
           </Button>
         </ScrollFadeIn>
