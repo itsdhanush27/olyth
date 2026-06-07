@@ -3,7 +3,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Button from '@/components/Button'
 import { useNavigate } from 'react-router'
-import { ArrowRight } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -56,13 +55,6 @@ export default function CTAWaveSection() {
           <Button onClick={() => navigate('/waitlist')}>
             Get Started
           </Button>
-          <button
-            onClick={() => navigate('/contact')}
-            className="inline-flex items-center gap-2 font-inter text-sm font-medium text-charcoal hover:text-orange transition-colors duration-300 group"
-          >
-            Talk to sales
-            <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform duration-300" />
-          </button>
         </div>
       </div>
     </section>

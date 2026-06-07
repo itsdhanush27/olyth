@@ -1,7 +1,5 @@
 import ScrollFadeIn from '@/components/ScrollFadeIn'
 import SectionLabel from '@/components/SectionLabel'
-import Button from '@/components/Button'
-import { useNavigate } from 'react-router'
 
 const features = [
   { name: 'WhatsApp Business API', olyth: 'full' },
@@ -20,7 +18,6 @@ const features = [
 ]
 
 export default function ComparisonTableSection() {
-  const navigate = useNavigate()
 
   return (
     <section className="bg-gray-50 py-20">
@@ -64,18 +61,7 @@ export default function ComparisonTableSection() {
           </div>
         </ScrollFadeIn>
 
-        {/* CTA */}
-        <ScrollFadeIn className="text-center mt-10">
-          <p className="font-archivo text-[22px] font-normal text-charcoal">
-            Ready to switch?
-          </p>
-          <p className="font-inter text-sm text-clay mt-2">
-            Join thousands of teams already using Olyth.
-          </p>
-          <Button onClick={() => navigate('/waitlist')} className="mt-6">
-            Get Started
-          </Button>
-        </ScrollFadeIn>
+
       </div>
     </section>
   )
