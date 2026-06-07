@@ -6,80 +6,107 @@ import Button from '@/components/Button'
 import { cn } from '@/lib/utils'
 import { useNavigate } from 'react-router'
 
-const plans = [
+interface Plan {
+  name: string
+  monthlyPrice?: number
+  annualPrice?: number
+  period?: string
+  subtitle?: string
+  subtitleColor?: string
+  features: string[]
+  cta: string
+  ctaVariant: 'primary' | 'secondary'
+  highlighted: boolean
+  isThal?: boolean
+}
+
+const plans: Plan[] = [
   {
-    name: 'Free Trial',
-    monthlyPrice: 0,
-    annualPrice: 0,
-    period: '/14 days',
-    subtitle: 'No credit card required',
-    subtitleColor: 'text-teal',
-    features: [
-      'Full platform access',
-      'All channels included',
-      'Thal AI assistant',
-      'Up to 500 conversations',
-      'Basic analytics',
-    ],
-    cta: 'Get Started',
-    ctaVariant: 'primary' as const,
-    highlighted: false,
-  },
-  {
-    name: 'Olyth Basic',
+    name: 'Basic',
     monthlyPrice: 19,
     annualPrice: 17,
     period: '/month',
-    subtitle: '',
     features: [
-      'Omnichannel inbox',
-      'Ticket management',
-      'Knowledge base',
-      'Basic automation',
-      'Email + chat support',
-      'Up to 3 team members',
+      'Omnichannel Inbox – All channels (WhatsApp, email, social, SMS)',
+      'Shared email inbox',
+      'Website live chat',
+      'Ticketing',
+      'Canned/saved replies',
+      'Basic contact list (name, email, tags)',
+      'Real-time performance dashboard',
+      'Basic analytics + monthly CSAT summary',
+      'Priority email support',
+      'AI perks included (Thal, Free replies)',
+      '1-year data retention',
     ],
     cta: 'Get Started',
     ctaVariant: 'primary' as const,
     highlighted: false,
   },
   {
-    name: 'Olyth Professional',
+    name: 'Professional',
     monthlyPrice: 39,
     annualPrice: 35,
     period: '/month',
-    subtitle: '',
     features: [
-      'Everything in Basic',
-      'Thal AI with full memory',
-      'Advanced automation',
-      'Workflow builder',
-      'Priority support',
-      'Up to 10 team members',
-      'Custom reports',
+      'All in Basic, plus',
+      'Light CRM (invoices, contracts, proforma, reminders)',
+      'Shared work drive & team creation',
+      'In platform payment integration (M-pesa, Stripe, Flutterwave)',
+      'Workflow automation builder (rules & triggers)',
+      'SLA policies & breach alerts',
+      'Full custom analytics & CSAT reports',
+      'Auto-assignment (round-robin and load balancing)',
+      'Internal notes & Collision detection (see who\'s replying)',
+      'Support portal with 24/7 priority email support',
+      'AI perks included (Thal, Free replies)',
+      '3-year data retention',
     ],
     cta: 'Get Started',
     ctaVariant: 'primary' as const,
     highlighted: true,
   },
   {
-    name: 'Olyth Enterprise',
+    name: 'Enterprise',
     monthlyPrice: 88,
     annualPrice: 80,
     period: '/month',
-    subtitle: '',
     features: [
-      'Everything in Professional',
-      'Unlimited team members',
+      'All in Professional, plus',
+      'HIPAA & GDPR compliance options',
+      'White-label (custom domain & branding)',
+      'Role-based access control (RBAC)',
+      'Multi-brand / multi-inbox management',
+      'Skills-based routing',
+      'Advanced AI perks & triage with sentiment scoring',
+      'AI conversation quality scoring (QA)',
+      'Custom API access & webhooks',
+      'Sandbox / staging environment',
       'Dedicated account manager',
-      'SLA guarantee',
-      'Custom integrations',
-      'Advanced analytics',
-      'On-premise option',
+      '5-year data retention & Audit trail',
     ],
     cta: 'Talk to Sales',
     ctaVariant: 'secondary' as const,
     highlighted: false,
+  },
+  {
+    name: 'Thal (AI Add-on)',
+    features: [
+      'Only pay for resolutions when conversations/tickets are resolved',
+      'Auto-responds across all omnichannel inbox',
+      'Auto-draft reply suggestions for agents',
+      'Auto-adds leads to integrated CRM or our light CRM',
+      'Tags & rates conversations',
+      'Routes conversations by keyword to department or person',
+      'In-platform AI assistant',
+      'Multilingual auto-response (detect & reply in customer\'s language)',
+      'AI conversation summaries for handoffs',
+      'Proactive outbound nudges (re-engagement)',
+    ],
+    cta: 'Learn More',
+    ctaVariant: 'primary' as const,
+    highlighted: false,
+    isThal: true,
   },
 ]
 
@@ -125,7 +152,7 @@ export default function PricingPreviewSection() {
               <div
                 key={plan.name}
                 className={cn(
-                  'relative bg-white rounded-card p-8 md:p-10 border transition-all duration-300 hover:border-orange/30 hover:shadow-card-hover',
+                  'relative bg-white rounded-card p-8 md:p-10 border transition-all duration-300 hover:border-orange/30 hover:shadow-card-hover flex flex-col',
                   plan.highlighted
                     ? 'border-2 border-orange shadow-card'
                     : 'border border-gray-200'
@@ -142,31 +169,67 @@ export default function PricingPreviewSection() {
                   {plan.name}
                 </p>
 
-                <div className="flex items-baseline gap-1 mt-3">
-                  <span className="font-archivo text-[36px] font-light text-charcoal tracking-[-1.44px]">
-                    ${isAnnual ? plan.annualPrice : plan.monthlyPrice}
-                  </span>
-                  <span className="font-inter text-sm text-clay">
-                    {plan.period}
-                  </span>
-                </div>
+                {plan.isThal ? (
+                  <div className="mt-3 flex flex-col gap-4">
+                    <div>
+                      <p className="font-inter text-[10px] font-semibold uppercase tracking-[1.5px] text-clay">
+                        Platform Access
+                      </p>
+                      <div className="flex items-baseline gap-1 mt-1.5">
+                        <span className="font-archivo text-[36px] font-light text-charcoal tracking-[-1.44px]">
+                          ${isAnnual ? '22' : '25'}
+                        </span>
+                        <span className="font-inter text-sm text-clay">
+                          /user/mo
+                        </span>
+                      </div>
+                      <p className="font-inter text-xs text-clay mt-1">
+                        {isAnnual ? 'when paid annually' : 'when paid monthly'}
+                      </p>
+                    </div>
+                    
+                    <div className="border-t border-gray-100 pt-3">
+                      <p className="font-inter text-[10px] font-semibold uppercase tracking-[1.5px] text-clay">
+                        Resolution Pricing
+                      </p>
+                      <div className="flex items-baseline gap-1 mt-1.5">
+                        <span className="font-archivo text-[24px] font-light text-charcoal tracking-[-0.96px]">$1</span>
+                        <span className="font-inter text-xs text-clay">per resolution</span>
+                      </div>
+                      <p className="font-inter text-[11px] text-teal mt-1 font-medium">
+                        Volume discounts available
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <div className="flex items-baseline gap-1 mt-3">
+                      <span className="font-archivo text-[36px] font-light text-charcoal tracking-[-1.44px]">
+                        ${isAnnual ? plan.annualPrice : plan.monthlyPrice}
+                      </span>
+                      <span className="font-inter text-sm text-clay">
+                        {plan.period}
+                      </span>
+                    </div>
 
-                {plan.subtitle && (
-                  <p className={cn('font-inter text-sm mt-2', plan.subtitleColor)}>
-                    {plan.subtitle}
-                  </p>
+                    {plan.subtitle && (
+                      <p className={cn('font-inter text-sm mt-2', plan.subtitleColor)}>
+                        {plan.subtitle}
+                      </p>
+                    )}
+
+                    {isAnnual && plan.monthlyPrice && plan.monthlyPrice > 0 && (
+                      <p className="font-inter text-sm text-clay mt-2">
+                        ${plan.annualPrice}/month (billed annually)
+                      </p>
+                    )}
+                  </>
                 )}
 
-                {isAnnual && plan.monthlyPrice > 0 && (
-                  <p className="font-inter text-sm text-clay mt-2">
-                    ${plan.annualPrice}/month (billed annually)
-                  </p>
-                )}
-
-                <ul className="flex flex-col gap-3 mt-6 mb-8">
+                <ul className="flex flex-col gap-3 mt-6 mb-8 flex-1">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3">
-                      <Check size={16} className="text-teal shrink-0" />
+                    <li key={feature} className="flex items-start gap-3">
+                      <Check size={16} className="text-teal shrink-0 mt-0.5" />
                       <span className="font-inter text-sm text-charcoal">{feature}</span>
                     </li>
                   ))}
@@ -175,7 +238,15 @@ export default function PricingPreviewSection() {
                 <Button
                   variant={plan.ctaVariant}
                   fullWidth
-                  onClick={() => navigate(plan.name === 'Olyth Enterprise' ? '/contact' : '/waitlist')}
+                  onClick={() => {
+                    if (plan.isThal) {
+                      navigate('/products/olyth-ai')
+                    } else if (plan.name === 'Enterprise') {
+                      navigate('/contact')
+                    } else {
+                      navigate('/waitlist')
+                    }
+                  }}
                   className={cn(
                     plan.ctaVariant === 'secondary' && '!border-charcoal !text-charcoal hover:!bg-charcoal hover:!text-white'
                   )}
@@ -186,16 +257,6 @@ export default function PricingPreviewSection() {
             ))}
           </div>
         </ScrollFadeIn>
-
-        {/* Thal Platform Access Note */}
-        <div className="text-center mt-8">
-          <p className="font-inter text-sm text-clay">
-            Thal Platform Access: +$25/month - Unlock the full AI engine with API actions, advanced RAG, and custom model training.{" "}
-            <button className="font-medium text-orange hover:underline">
-              Learn more about Thal
-            </button>
-          </p>
-        </div>
       </div>
     </section>
   )

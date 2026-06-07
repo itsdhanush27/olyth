@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SectionLabel from '@/components/SectionLabel'
 import Button from '@/components/Button'
 import { Brain, Zap, Database, Plug, Clock, MessageSquare } from 'lucide-react'
+import { useNavigate } from 'react-router'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -41,6 +42,7 @@ const capabilities = [
 ]
 
 export default function MeetThalSection() {
+  const navigate = useNavigate()
   const sectionRef = useRef<HTMLElement>(null)
   const cardsRef = useRef<HTMLDivElement>(null)
 
@@ -123,7 +125,7 @@ export default function MeetThalSection() {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <Button onClick={() => {}}>
+          <Button onClick={() => navigate('/waitlist')}>
             See Thal in Action
           </Button>
         </div>
