@@ -79,7 +79,7 @@ export default function Footer() {
               />
             </button>
             <p className="font-inter text-sm text-gray-400 mt-1 max-w-[260px] leading-relaxed">
-              Unified customer support for emerging markets. Powered by Thal, a built-in AI operational brain.
+              WhatsApp native customer operations platform for emerging markets. Powered by Thal, a built-in AI operational brain.
             </p>
           </div>
 
